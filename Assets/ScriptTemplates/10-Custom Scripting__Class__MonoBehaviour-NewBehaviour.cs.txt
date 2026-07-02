@@ -1,8 +1,7 @@
 using UnityEngine;
 
 #ROOTNAMESPACEBEGIN#
-#NOTRIM#
-    public class #SCRIPTNAME# : MonoBehaviour
+#NOTRIM#    public class #SCRIPTNAME# : MonoBehaviour
     {
         private void Awake()
         {

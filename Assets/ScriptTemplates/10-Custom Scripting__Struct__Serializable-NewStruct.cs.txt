@@ -1,8 +1,8 @@
 using System;
 
 #ROOTNAMESPACEBEGIN#
-#NOTRIM#
-    public class #SCRIPTNAME# : MonoBehaviour
+#NOTRIM#    [Serializable]
+    public struct #SCRIPTNAME#
     {
         #NOTRIM#
     }

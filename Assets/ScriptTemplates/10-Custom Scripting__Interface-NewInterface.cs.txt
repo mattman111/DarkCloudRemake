@@ -1,9 +1,7 @@
 using System;
 
 #ROOTNAMESPACEBEGIN#
-#NOTRIM#
-    [System.Serializable]
-    public class #SCRIPTNAME#
+#NOTRIM#    public interface #SCRIPTNAME#
     {
         #NOTRIM#
     }
