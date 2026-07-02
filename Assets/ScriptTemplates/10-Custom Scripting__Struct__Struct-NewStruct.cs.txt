@@ -1,8 +1,7 @@
 using System;
 
 #ROOTNAMESPACEBEGIN#
-#NOTRIM#
-    public interface #SCRIPTNAME#
+#NOTRIM#    public struct #SCRIPTNAME#
     {
         #NOTRIM#
     }
