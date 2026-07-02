@@ -1,0 +1,10 @@
+using System;
+
+#ROOTNAMESPACEBEGIN#
+#NOTRIM#
+    [System.Serializable]
+    public class #SCRIPTNAME#
+    {
+        #NOTRIM#
+    }
+#ROOTNAMESPACEEND#
