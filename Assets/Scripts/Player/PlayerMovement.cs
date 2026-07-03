@@ -5,14 +5,18 @@ namespace ByteClub.MayorOffice.Player
     [RequireComponent(typeof(PlayerInputHandler))]
     public class PlayerMovement : MonoBehaviour
     {
+        private const float _downwardForce = -2f;
         [SerializeField] private float _playerMoveSpeed;
 
         private PlayerInputHandler _input;
+        private CharacterController _characterController;
+
         private Vector2 _moveInput;
 
         private void Awake()
         {
             _input = GetComponent<PlayerInputHandler>();
+            _characterController = GetComponent<CharacterController>();
         }
 
         private void OnEnable()
@@ -32,8 +36,10 @@ namespace ByteClub.MayorOffice.Player
 
         private void Update()
         {
-            Vector3 move = new Vector3(_moveInput.x, 0f, _moveInput.y);
-            transform.Translate(move * (_playerMoveSpeed * Time.deltaTime));
+            Vector3 move = new Vector3(_moveInput.x, 0f, _moveInput.y) * _playerMoveSpeed;
+            move.y = _downwardForce;
+
+            _characterController.Move(move * Time.deltaTime);
         }
     }
 }
