@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ByteClub.MayorOffice
+namespace ByteClub.MayorOffice.Environment
 {
     public class Door : MonoBehaviour, IInteractable
     {
