@@ -18,17 +18,17 @@ namespace ByteClub.MayorOffice.NPC
             Debug.Log($"Player interacted with {Name}.");
         }
 
-        private void OnTriggerEnter(Collider other)
+        public void PlayerEntered(Collider other)
         {
-            if (other.TryGetComponent<Player>(out _))
+            if (other.GetComponentInParent<Player>())
             {
                 SetNotificationVisible(true);
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        public void PlayerExited(Collider other)
         {
-            if (other.TryGetComponent<Player>(out _))
+            if (other.GetComponentInParent<Player>())
             {
                 SetNotificationVisible(false);
             }
