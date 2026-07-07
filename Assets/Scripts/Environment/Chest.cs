@@ -1,4 +1,5 @@
 using UnityEngine;
+using ByteClub.MayorOffice.Players;
 
 namespace ByteClub.MayorOffice.Environment
 {
@@ -19,7 +20,7 @@ namespace ByteClub.MayorOffice.Environment
             _isOpen = false;
             _isOpenning = false;
         }
-        public void Interact()
+        public void Interact(Player player)
         {
             if (!_isOpen && !_isOpenning)
             {
@@ -31,8 +32,16 @@ namespace ByteClub.MayorOffice.Environment
             {
                 Debug.Log("Chest is already open.");
             }
+        }
 
+        public void OnPlayerEntered(Player player)
+        {
+            Debug.Log("Player entered area.");
+        }
 
+        public void OnPlayerExited(Player player)
+        {
+            Debug.Log("Player exited area.");
         }
 
         void Update()

@@ -8,30 +8,29 @@ namespace ByteClub.MayorOffice.NPC
         [SerializeField] private Canvas _popUpNotification;
         [field: SerializeField] public string Name { get; private set; }
 
+        private NpcInteractionTrigger _interactionTrigger;
+
         private void Awake()
         {
             _popUpNotification.enabled = false;
+            _interactionTrigger = GetComponentInChildren<NpcInteractionTrigger>();
         }
 
-        public void Interact()
+        public void Interact(Player player)
         {
             Debug.Log($"Player interacted with {Name}.");
         }
 
-        public void PlayerEntered(Collider other)
-        {
-            if (other.GetComponentInParent<Player>())
-            {
-                SetNotificationVisible(true);
-            }
-        }
+        public void OnPlayerEntered(Player player) => HandlePlayerEntered(player);
+        public void OnPlayerExited(Player player) => HandlePlayerExited(player);
 
-        public void PlayerExited(Collider other)
+        private void HandlePlayerEntered(Player player)
         {
-            if (other.GetComponentInParent<Player>())
-            {
-                SetNotificationVisible(false);
-            }
+            SetNotificationVisible(true);
+        }
+        private void HandlePlayerExited(Player player)
+        {
+            SetNotificationVisible(false);
         }
 
         private void SetNotificationVisible(bool visible)

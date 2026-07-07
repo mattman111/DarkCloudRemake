@@ -1,24 +1,30 @@
+using System;
 using UnityEngine;
+using ByteClub.MayorOffice.Players;
 
 namespace ByteClub.MayorOffice.NPC
 {
     public class NpcInteractionTrigger : MonoBehaviour
     {
-        private InteractableNpc _npc;
+        public event Action<Player> OnPlayerEntered;
+        public event Action<Player> OnPlayerExited;
 
-        private void Awake()
+        private void OnTriggerEnter(Collider otherColliding)
         {
-            _npc = GetComponentInParent<InteractableNpc>();
+            Player player = otherColliding.GetComponent<Player>() ?? otherColliding.GetComponentInParent<Player>();
+            if (player != null)
+            {
+                OnPlayerEntered?.Invoke(player);
+            }
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerExit(Collider otherColliding)
         {
-            _npc.PlayerEntered(other);
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            _npc.PlayerExited(other);
+            Player player = otherColliding.GetComponent<Player>() ?? otherColliding.GetComponentInParent<Player>();
+            if (player != null)
+            {
+                OnPlayerExited?.Invoke(player);
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace ByteClub.MayorOffice
+namespace ByteClub.MayorOffice.UI.InteractIcon
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class IconController : MonoBehaviour
@@ -20,11 +20,6 @@ namespace ByteClub.MayorOffice
             {
                 DisableIcon();
             }
-        }
-
-        void Update()
-        {
-
         }
 
         public void DisableIcon()

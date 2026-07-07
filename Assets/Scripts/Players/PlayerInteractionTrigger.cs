@@ -1,21 +1,25 @@
+using ByteClub.MayorOffice.UI.InteractIcon;
 using UnityEngine;
 
-namespace ByteClub.MayorOffice
+namespace ByteClub.MayorOffice.Players
 {
-
-    /// Will move interactionIcon logic to seperate script later - Matt
-    public class EnvironmentInteractor : MonoBehaviour
+    public class PlayerInteractionTrigger : MonoBehaviour
     {
-        [SerializeField] private Collider _collider;
         [SerializeField] private IconController _icon;
-        private IInteractable _interactable;
 
+        private Player _player;
+        private IInteractable _currentInteractable;
+
+        private void Awake()
+        {
+            _player = GetComponentInParent<Player>();
+        }
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out IInteractable interactable))
             {
                 Debug.Log($"TRIGGER ENTERED: {other.name}");
-                _interactable = interactable;
+                _currentInteractable = interactable;
                 _icon.EnableIcon();
             }
         }
@@ -24,18 +28,18 @@ namespace ByteClub.MayorOffice
         {
             IInteractable interactable = other.GetComponent<IInteractable>();
 
-            if (interactable == _interactable)
+            if (interactable == _currentInteractable)
             {
-                _interactable = null;
+                _currentInteractable = null;
                 _icon.DisableIcon();
             }
         }
 
         public void Interact()
         {
-            if (_interactable != null)
+            if (_currentInteractable != null)
             {
-                _interactable.Interact();
+                _currentInteractable.Interact(_player);
                 _icon.DisableIcon();
             }
         }
