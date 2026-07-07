@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8182619831204921542}
   - component: {fileID: 4842572082094719471}
   m_Layer: 0
-  m_Name: InteractionCollider
+  m_Name: InteractionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ByteClub.MayorOffice.EnvironmentInteractor
   _collider: {fileID: 4842572082094719471}
+  _icon: {fileID: 0}
 --- !u!114 &9043117804051363925
 MonoBehaviour:
   m_ObjectHideFlags: 0
